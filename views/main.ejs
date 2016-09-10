@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<style>
+    #symptom {
+       height: 50px;
+       width: 400px;
+       outline: none;
+       font-size: 20px;
+       color: orange;
+       padding: 10px;
+       border: 2px solid lightblue;
+       border-radius: 10px;
+       background-color: white;
+       cursor: pointer;
+       margin:20px;
+      }
+      #add_sym {
+          height:50px;
+          width:50px;
+          border-radius:25px;
+          border:3px solid lightblue;
+          background-color:white;
+          font-size:30px;
+          margin:10px;
+          outline:none;
+          cursor:pointer;
+      }
+      #buttonadd {
+          height:50px;
+          width:50px;
+          border-radius:25px;
+          border:3px solid lightblue;
+          background-color:white;
+          font-size:30px;
+          margin:10px;
+          outline:none;
+          cursor:pointer;
+      }
+      #check_diseases {
+          position: absolute;
+          bottom:10px;
+          right:10px;
+          cursor:pointer;
+      }
+    #selected_symptoms {
+          position: absolute;
+          left:700px;
+          top:20px;
+          border: 2px solid lightgrey;
+          width:400px;
+          height:700px;
+      }
+      #diseases{
+          width:500px;
+          border: 2px solid lightblue;
+          display:none;
+       }
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</head>
+<body>
+    <div id="symptoms_div">
+        <form id="medicare">
+            <h3>Select the symptoms</h3>
+            <select id="symptom" name="symptom" placeholder="Enter symptom">
+              <% for(var i = 0; i < symptoms.length ; i++) { %>
+                <option><%= symptoms[i].symptom %></option>
+              <% } %>
+            </select>
+            <button id="add_sym" > <b>+</b> </button>
+        </form>
+        <div id="selected_symptoms">
+            <h3>Selected Symptoms:</h3>
+            <button id="check_diseases" onclick="sendAjax()"> Check Diseases</button>
+        </div>
+    </div>
+
+    <div id="diseases">
+        <h1> Possible Diseases:</h1>
+    </div>
+    <script>
+        $('#medicare').submit(function(e) {
+            e.preventDefault();
+        });
+
+        $('#check_diseases').click(function(){
+            $('#symptoms_div').hide();
+            $('#diseases').show();
+        });
+    </script>
+
+    <!--<p id="show_result"></p>-->
+</body>
+<script type="text/javascript" src="/javascripts/form.js"></script>
+</html>
